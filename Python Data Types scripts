@@ -1,0 +1,215 @@
+# Module 2, Part 2 scripts
+
+#number = float("123545")
+#print(number)
+#print(type(number))
+#
+#this_bool = 1 > 2
+#print(not(this_bool))
+
+
+
+# Boolean.py
+
+#import random
+# 
+#male = False
+#male = bool(random.randint(0, 1))
+# 
+#if (male):
+#   print ("We will use name Rangi")
+#else:
+#   print ("We will use name Anihera")
+
+
+
+
+
+# variable set to integer
+# my_score = 201
+#  
+# print("The type of my_score is ", type(my_score),"\n")
+# print("my_score is ", my_score,"\n")
+#  
+# print("Casting to a string...\n")
+# # variable cast to string
+# my_score = str(my_score)
+#  
+# print("The type of my_score is now ", type(my_score),"\n")
+# print("my_score is ", my_score,"\n")
+
+
+
+# Casting.py
+
+# #variable set to float
+# my_size = -8.5
+# 
+# print("The type of my_size is", type(my_size), "\n")
+# print("my_size is", my_size, "\n")
+# 
+# print("Casting to an integer...\n")
+# #cast variable to integer
+# my_size = int(my_size)
+# 
+# print("The type of my_size is now", type(my_size), "\n")
+# print("my_size is", my_size)
+
+
+
+# UserEntry.py
+
+# print("Welcome to your first data entry program\n")
+# user_name = input("Please enter your name...\n")
+# user_yob = int(input("Please enter your year of birth...\n"))
+#  
+# print("Thank you for your input\n")
+# print("The name that you entered is ", user_name)
+# print("Your age in years is ", 2016 - user_yob)
+
+
+# UserEntrySleep.py
+
+# print("Welcome to your data entry program\n")
+# user_yob = int(input("Please enter your year of birth\n"))
+# sleep_hours = (2023-user_yob)*365*7
+# print("You have slept", sleep_hours, "in your life")
+
+
+
+# DateTest.py
+
+# from datetime import datetime
+# from datetime import timedelta
+#  
+# date_input = input("Please enter you DOB in the format DD MM YYYY: \n")
+#  
+# # cast to a datetime object
+# date_object = datetime.strptime(date_input, '%d %m %Y')
+#  
+# # output some confirmation
+# print ("The year entered is ", date_object.year, "\n")
+#  
+# # do a calculation
+# my_age = datetime.today() - date_object
+#  
+# # show the result in different formats
+# print ("My exact age is ", my_age, "\n")
+# print ("My exact age just in days is ", my_age.days, "days\n")
+# print(type(my_age.days))
+# print(type(my_age.days / 365))
+# print ("My exact age just in years is ", int(my_age.days/365), "years\n")
+#  
+# # add 10 days to my current age
+# print("In 10 days time the date will be ", datetime.today() + timedelta(days=10), ".\n")
+ 
+# # add my current age to today's date
+# print("I will be double my age on ", datetime.today()+ my_age, ".")
+
+
+
+
+# DateTimePractice.py
+
+# Challenge 1
+# from datetime import datetime
+# from datetime import timedelta
+# date_input = input("Please enter a date in the format DD MM YYYY: \n")
+# date_object = datetime.strptime(date_input, '%d %m %Y')
+# past_date = date_object - timedelta(days=125)
+# print("The date 125 days earlier is", past_date.date())
+# 
+# # Challenge 2
+# from datetime import datetime
+# from datetime import timedelta
+# date_input = input("Please enter a date in the format DD MM YYYY: \n")
+# date_object = datetime.strptime(date_input, '%d %m %Y')
+# future_date = date_object + timedelta(weeks=2)
+# print("The date 2 weeks later is", future_date.date())
+
+# #Challenge 3
+# from datetime import datetime
+# # from datetime import timedelta
+# birthday_1_input = input("Please enter a birthday in the format DD MM YYYY\n")
+# birthday_1_object = datetime.strptime(birthday_1_input, "%d %m %Y")
+# birthday_2_input = input("Please enter another birthday in the format DD MM YYYY\n")
+# birthday_2_object = datetime.strptime(birthday_2_input, "%d %m %Y")
+# date_difference_object = birthday_1_object - birthday_2_object
+# date_difference = date_difference_object.days
+# if (date_difference < 0):
+#     date_difference = -date_difference
+# print("The age difference between these two birhdays is", date_difference, "days.")
+
+# # Challenge 4
+# from datetime import datetime
+# from datetime import timedelta
+# user_date_input = input("Hi there, please enter a date in the format DD MM YYYY\n")
+# date_object = datetime.strptime(user_date_input, "%d %m %Y")
+# initial_year = date_object.year
+# # print(type(initial_year))
+# user_years_input = int(input("Please enter a positive whole number representing a number of years later\n"))
+# # print(type(user_years_input))
+# final_date = date_object.replace(year=initial_year+user_years_input)
+# message = "The later date will be {:%d %m %Y}."
+# print(message.format(final_date))
+
+# # Challenge 5
+# from datetime import datetime
+# date_1_input = input("Please enter a date in the format DD MM YYYY\n")
+# date_1_object = datetime.strptime(date_1_input, "%d %m %Y")
+# date_2_input = input("Please enter another date in the format DD MM YYYY\n")
+# date_2_object = datetime.strptime(date_2_input, "%d %m %Y")
+# date_difference_object = date_1_object - date_2_object
+# date_difference = date_difference_object.days
+# if (date_difference < 0):
+#     date_difference = -date_difference
+# print(round(date_difference/365.25, 2))
+
+
+
+# # FinalStringOfPrintFunction.py
+# 
+# print("my")
+# print("name")
+# 
+# print("my", end="\n")
+# print("name")
+# 
+# print("my\n")
+# print("name")
+# 
+# print("my", end="")
+# print("name")
+# 
+# print("my", end=" ")
+# print("name")
+
+
+
+# # UsingQuotesEscapeSequences.py
+# print("My hair stylist, Henry \'The Great,\' who never says \"can\'t.\"")
+# # Note that we could have just used the following code, without the escape sequence for the single quote in the word can't , or the single quotes around the words The Great
+# print("My hair stylist, Henry 'The Great,' who never says \"can't.\"")
+
+
+
+# # SoundSystemBell.py
+# print("\a")
+
+
+
+# # SillyStrings.py
+# # String concatenation and repetition, and the line-continuation character, \
+# print("You can concatenate two " + "strings with the '+' operator.")
+# 
+# print("\nThis string " + "may not " + "seem terr" + "ibly impressive. " \
+#  + "But what " + "you don't know" + " is that\n" + "it's one real" \
+#  + "l" + "y" + " long string, created from the concatenation " \
+#  + "of " + "twenty-two\n" + "different strings, broken across " \
+#  + "six lines." + " Now are you" + " impressed? " + "Okay,\n" \
+#  + "this " + "one " + "long" + " string is now over!")
+#  
+# print("\nIf you really like a string, you can repeat it. For example,")
+# print("who doesn't like pie? That's right, nobody. But if you really")
+# print("like it, you should say it like you mean it:")
+# print("Pie" * 10)
