@@ -1,0 +1,759 @@
+# WhileLoops.py
+ 
+is_running = True
+ 
+while is_running:
+    answer = input("What is the meaning of life?...\n")
+    if answer == "42":
+        print("Correct! Well done!\n")
+        # correct answer, so exit the loop - set is_running to False so that the while loop condition evaluates to False
+        is_running = False
+    else:
+        print("Sorry that is the wrong answer.... "
+              "Try again!\n")
+ 
+x = input("Press any key to exit.\n")
+ 
+# Testing
+print("My test assertions are as follows:")
+# assertion test case 1
+print("\nanswer = love => 'Sorry...', loop repeats")
+# assertion test case 2
+print("\nanswer = 42 => 'Correct! Well done!', loop exits")
+
+
+
+
+
+# WhileBreak.py
+
+number_of_tries = 3
+ 
+while True:
+    answer = input("What is the meaning of life?...\n")
+    if answer == "42":
+        print("Correct! Well done!\n")
+        # correct answer, so exit loop using break
+        break
+    else:
+        print("Sorry that is the wrong answer.... "
+              "Try again!\n")
+        number_of_tries -= 1
+ 
+    # check number of tries and break if none left
+    if number_of_tries == 0:
+        print("You have run out of goes. Sorry.")
+        break
+ 
+x = input("Press any key to exit.")
+ 
+"""
+# assertion test case 1
+answer = 42 results in Correct! Well done!
+ 
+# assertion test case 2
+answers 1,2 then 3 results in You have run out of goes. Sorry.
+"""
+
+
+
+
+# WhileLoopPractice1.py
+# Note that some of the following examples would be better suited to using a for loop
+term = 1
+number = int(input("Please enter a positive integer:\n"))
+
+while term <= number:
+    print("[", term, "] ", end="")
+    term += 1
+
+"""
+print("My assertions are:"
+"\nnumber = 6 => output = [ 1 ] [ 2 ] [ 3 ] [ 4 ] [ 5 ] [ 6 ]"
+"\nnumber = 4 => output = [ 1 ] [ 2 ] [ 3 ] [ 4 ]")
+"""
+
+
+
+
+
+
+# WhileLoopPractice2.py
+
+largest_int = int(input("Please enter the largest integer you want to sum to:\n"))
+
+term = 1
+sum_total = 0
+
+while term <= largest_int:
+    sum_total += term
+    term += 1
+
+print(sum_total)
+
+"""
+print("My test assertions are:\n"
+"largest_int = 6 => sum_total = 21"
+"largest_int = 100 => sum_total = 5050")
+"""
+
+
+
+
+# WhileLoopPractice3.py
+
+# return multiples of the increment from start integer to end integer, inclusive of end integer
+
+start_int = int(input("Please enter a starting integer:\n"))
+increment = int(input("Please enter an integer increment:\n"))
+end_int = int(input("Please enter an ending integer which is greater than the starting integer:\n"))
+
+# note that  (start - (start % increment)) is divisible by increment , and then if we add increment then this will also be divisible by increment 
+first_multiple = start_int - start_int % increment + increment
+
+multiple = first_multiple
+
+while multiple <= end_int:
+    print(multiple, end=", ")
+    multiple += increment
+
+"""
+print("My test assertions are:\n"
+"start_int = 3, increment = 3, end_int = 20 => output = 12, 15, 18,\n"
+"start_int = -19, increment = 5, end_int = 20 => output = -15, -10, -5, 0, 5, 10, 15, 20,\n"
+"""
+
+
+
+
+
+# WhileLoopPractice4.py
+
+stored_password = "nomnom"
+attempt_count = 1
+end_attempts_flag = False
+max_attempts = 3
+
+password_attempt = input("Please enter your password:\n")
+
+while attempt_count <= max_attempts and end_attempts_flag == False:
+    if password_attempt.lower() == "exit":
+        end_attempts_flag = True
+        print("Program terminated")
+    elif password_attempt == stored_password:
+        end_attempts_flag = True
+        print("Correct password")
+    else:
+        print("Incorrect password")
+        if attempt_count == max_attempts:
+            end_attempts_flag = True
+            print("You have run out of attempts!")
+        else:
+            password_attempt = input("Please enter your password:\n")
+        attempt_count += 1
+
+"""
+print("My test assertions are:\n"
+"password_attempt = 0, password_attempt = 0, password_attempt = 0, => output = Incorrect password, Incorrect password, Incorrect password, You have run out of attempts\n"
+"password_attempt = 0, password_attempt = exit => output = Incorrect password, Program terminated\n"
+"password_attempt = 0, password_attempt = 0, password_attempt = "nomnom", => output = Incorrect password, Incorrect password, Correct password\n"
+
+
+
+
+
+
+# WhileLoopPractice5.py
+
+# From Python for Absolute Beginners book, Github Repository
+
+# Guess My Number
+#
+# The computer picks a random number between 1 and 100
+# The player tries to guess it and the computer lets
+# the player know if the guess is too high, too low
+# or right on the money
+
+import random  
+
+print("\tWelcome to 'Guess My Number'!")
+print("\nI'm thinking of a number between 1 and 100.")
+print("\nTry to guess it in as few attempts as possible.\n")
+
+the_number = random.randint(1, 100)
+
+
+guess = int(input("Take a guess:\n"))
+tries = 1
+
+while guess != the_number:
+    if guess > the_number:
+        print("Lower...")
+    else:
+        print("Higher...")
+    
+    guess = int(input("\nHave another guess:\n"))
+    tries += 1
+
+print("Congrats! You guessed it!")
+print("And it only took you", tries, "tries!\n")
+
+input("Press the enter key to exit the program")
+
+
+
+
+
+
+# Fibonacci.py
+
+# this code returns a number of terms from the Fibonacci sequence, starting from a given term of the sequence
+
+print("\nThe Fibonacci Sequence:\n")
+
+first_term_num = 0
+# note that in this code, we refer to the third term, which would be F(2)=1 , where F(0)=0 and F(1)=1
+while first_term_num < 3:
+  first_term_num = int(input("Please enter a positive integer corresponding to the term number of the starting term of the sequence (should be >= 3), e.g. 3 gives the third term of the sequence, which is F(3-1)=F(2)=1 :\n"))
+  
+total_terms = 0
+while total_terms <= 0:
+  total_terms = int(input("Please enter number of terms to generate (should be a positive integer):\n"))
+ 
+print("\n", total_terms, "terms in the sequence starting from term ", first_term_num, "(i.e. from term F(", first_term_num - 1,") ):")
+ 
+# note that if we hadn't already converted first_term_num and total_terms to integers, then we could do so as follows:
+# first_term_num, total_terms = int(first_term_num), int(total_terms)
+ 
+# initialise incrementing variables
+# term_i_tick is the incrementing variable which tracks the term number i of the ith term in the Fibonacci sequence, where fi + fj = fk , i.e. f(i) + f(i+1) = f(i+2)
+# term_i_tick is initialised to 2 (i.e. 3 - 1 , where 3 comes from initial input), which corresponds to the second term of the sequence, i.e. F(1)=1
+# total_terms_tick is the incrementing variable which keeps tracks of the number of terms returned from the sequence
+# total_terms_tick is initialised to 0 (i.e. 1 - 1, where 1 comes from initial input), which corresponds to 0 terms being returned, so that the loop will run the first time (this total_terms_tick will of course be incremented in the while loop)
+term_i_tick, total_terms_tick = 2, 0
+ 
+# initialise the first two terms in the sequence
+# here we take F(1)=1 and F(2)=1
+# use the terminology fi + fj = fk to generate subsequent terms of the sequence
+fi, fj = 0, 1
+ 
+while total_terms_tick < total_terms:
+    fk = fi + fj
+    fi, fj = fj, fk
+    term_i_tick += 1
+    if term_i_tick >= first_term_num: # if the condition is true, a number will be printed
+        total_terms_tick += 1
+        if total_terms_tick < total_terms: # at this point, total_terms_tick is the number of terms we have printed so far, and total_terms is the total number of terms we want to print. If this condition is true, then the number we are about to print will NOT be the last term we will print
+          print(fk, end = ", ")
+        else:
+          print(fk)
+
+"""
+print("My test assertions are:\n"
+"first_term_num = 3, total_terms = 5 => output = 1, 2, 3, 5, 8\n"
+"""
+
+
+
+
+
+# For loop examples
+
+# ForLoopExample1.py
+
+for counter in range(5):
+      print("hello world")
+
+
+# ForLoopExample2.py
+
+user_input = int(input("Please enter the number of times "
+                       "that you wish to see the message."))
+ 
+for i in range(user_input):
+    print("hello world....", i)
+
+
+# ForLoopExample3.py
+
+user_input = int(input("Please enter a number for the size of the shape you wish to create.\n"))
+ 
+for i in range(user_input):
+    for j in range(i):
+        print('* ', end="")
+    print('')
+    
+# note that in the above code, say where user_input = 3,
+# then we have the first loop as   for i in range(3)
+# so the loop body will execute for i=0 , i=1 and i=2
+# inside the inner loop, we have   for j in range(i) ,
+# so that this loop will run for each value of i from the outer loop.
+# !! Note that when i=0 , then in the inner loop we have  for j in range(0) .
+# Note that there will be nothing returned here, since in this case,
+# the range function will run from the start term (which is 0),
+# up to but not including the end term (which is 0) ,
+# and so no terms are returned for i=0.
+# After this, we will have the inner loop run for i=1 and i=2 ,
+# which will return 1 * and 2 *'s , respectively.
+ 
+for i in range(user_input, 0, -1):
+    for j in range(i):
+        print('* ', end="")
+    print('')
+
+
+
+
+
+# HappyNewYearForLoop.py
+
+import time
+
+for seconds in range(10, 0, -1):
+    print(seconds)
+    time.sleep(1)
+print("Happy New Year!!!")
+
+
+
+
+
+# LoopExercise1.py
+
+# find numbers divisible by 5 and 7, between 1500 and 2700, inclusive
+my_list = []
+for i in range(1500, 2701):
+    if i%5 ==0 and i%7 ==0:
+        my_list.append(str(i))
+print(','.join(my_list))
+
+
+
+
+# LoopExercise2.py
+
+# Keep guessing random number between 1 and 10 until user gets it right
+
+import random
+
+target_num, guess = random.randint(1, 10), 0
+print(target_num)
+while target_num != guess:
+    guess = int(input("Please guess a number between 1 and 10:\n"))
+print("You got it right!")
+
+
+
+
+# LoopExercise3.py
+
+# print all the numbers from 0 to 6, except for 3 and 6
+
+for i in range(0, 7):
+    if i==3 or i==6:
+        continue
+    print(i, end=" ")
+print("\n")
+
+
+
+
+
+# LoopExercise4.py
+
+# fizzbuzz exercise
+# for integers between 1 and 50 (inclusive)
+# divisible by 3 => fizz
+# divisible by 5 => buzz
+# divisible by 3 and 5 => fizzbuzz
+
+for i in range(1,51):
+    if i%3 ==0 and i%5 == 0:
+        print("fizzbuzz")
+        continue
+    elif i%3 == 0:
+        print("fizz")
+        continue
+    elif i%5 == 0:
+        print("buzz")
+        continue
+    print(i)
+
+
+
+# LoopExercise5.py
+
+# calculate dog's age in dog years when given dog's age in human years
+
+h_age = int(input("Please enter a dog's age in human years:\n"))
+
+while h_age < 0:
+    h_age = int(input("Age must be a non-negative integer.\nPlease enter a dog's age in human years:\n"))
+    
+if h_age <= 2:
+    d_age = 10.5*h_age
+else:
+    d_age = 21 + 4*(h_age - 2)
+
+print("The dog's age in dog years is", d_age, "\n")
+
+
+
+
+# LoopExercise6.py
+
+# checking whether triangle is equilateral, isosceles or scalene, with checking for valid triangle sides and side length input
+
+a = 0
+b = 0
+c = 0
+
+# note that to test for a valid triangle, we could also do:
+# while a+b < c or a+c < b or b+c > a:
+# we want to check that the sum of the two smaller side lengths is larger than the largest side length
+# to check for a valid triangle, the code below is equivalent to checking that half of the perimeter of
+# the triangle is greater than the largest side length (we can actually derive this from the code below) - this would give us:
+# while a + b + c <= 2*max(a, b, c):
+while a + b + c - max(a, b, c) <= max(a, b, c):
+    print("Please input valid side lengths for a triangle")
+    
+    a = float(input("Enter the length of the side 'a' of the triangle:\n"))
+    
+    while a < 0:
+        a = float(input("Invalid input - please enter a positive number for side length a :\n"))
+    b = float(input("Enter the length of the side 'b' of the triangle:\n"))
+    
+    while b < 0:
+        b = float(input("Invalid input - please enter a positive number for side length b :\n"))
+    
+    c = float(input("Enter the length of the side 'c' of the triangle:\n"))
+    
+    while c < 0:
+        c = float(input("Invalid input - please enter a positive number for side length c :\n"))
+
+if a == b == c:
+    print("The triangle is an equilateral triangle")
+elif a == b or a == c or b == c:
+    print("The triangle is an isosceles triangle")
+else:
+    print("The triangles is a scalene triangle")
+
+
+
+
+
+# LoopExercise7.py
+
+print("Input some non-zero integers, and then input 0 to calculate their sum and average:\n")
+
+count = 0
+sum = 0
+number = 1
+
+while number != 0:
+    number = int(input("Enter a number:\n"))
+    count +=1
+    sum += number
+
+# note that the final count includes the 0 that was entered    
+if count == 1:
+    print("Whoops, you needed to input some non-zero integers.")
+else:
+    print("The average and sum of those numbers is", sum/(count-1), "and", sum, ", respectively.")
+    
+# note that on the final iteration of the loop above, where the user enters 0
+# then this will add 1 to the count, and 0 to the sum. Hence, to calculate
+# the final sum, we will need to remove 1 from the final count
+
+
+
+
+# LoopExercise8.py
+
+# Times Tables maker
+
+number = int(input("Please input a positive integer\n"))
+
+while number <= 0:
+    number = int(input("That is not a valid number. Please input a positive integer:\n"))
+
+# use for loop to iterate 10 times
+for i in range(1, 11):
+    print(number, "x", i, "=", number*i)
+
+
+
+
+
+
+# Lists.py
+
+# empty list
+my_list = []
+# list of integers
+my_list = [1, 2, 3]
+# list with mixed datatypes
+my_list = [1, "Hello", 3.4]
+# nested list
+my_list = ["mouse", [8, 4, 6]]
+ 
+my_list = ['p','r','o','b','e']
+# Output: p
+print(my_list[0])
+# Output: o
+print(my_list[2])
+# Output: e
+print(my_list[4])
+# Error! Only integer can be used for indexing
+# my_list[4.0]
+# Nested List
+n_list = ["Happy", [2,0,1,6]]
+# Nested indexing
+# Output: a
+print(n_list[0][1])
+# Output: 6
+print(n_list[1][3])
+# using negative indexing
+# Output: e
+print(my_list[-1])
+# Output: p
+print(my_list[-5])
+
+
+
+
+# ListIterate.py
+ 
+sample_list = [1, 4, 5, 2, 9, 12]
+ 
+for item in sample_list:
+    print("An item in the sample list is ", item)
+ 
+# If you need both the index and the item, use the enumerate function:
+for index, item in enumerate(sample_list):
+    print ("The element index is ",index," and the value is ", item)
+ 
+# If you need only the index, use range and len:
+# note that the len function returns the number of items in the list, which will be 1 greater than the largest index element in the list, and so when we use the range function with the only argument being the output of the len function applied to the list, then this will return all of the elements in the list
+for index in range(len(sample_list)):
+    print ("The element index is ",index)
+ 
+# The list object supports the iterator protocol. To explicitly
+# create an iterator, use the built-in iter function:
+ 
+i = iter(sample_list)
+item = i.__next__() # fetch first value
+print("An item in the sample list is ", item)
+item = i.__next__() # fetch second value
+print("An item in the sample list is ", item)
+ 
+# Python provides various shortcuts for common list operations. For example,
+# if a list contains numbers, the built-in sum function gives you the sum:
+ 
+list_sum = sum(sample_list)
+print("\nThe sum of the items in the list is.... ", list_sum)
+ 
+subtotal = 23
+total = sum(sample_list, subtotal)
+# note that we can sum a list and a subtotal like this, but we can't find
+# the sum of two int or float type variables like this, i.e. we can't have
+# a = 4
+# b = 5
+# grand_total = sum(a,b)
+# Rather, in this case we would just do:
+# grand_total = a + b
+print("\nThe sum of the items in the list and another number is.... ", total)
+
+# Note that in the code below, we don't need to wrap sum(sample_list) in the float type cast function 
+average = float(sum(sample_list)) / len(sample_list)
+print("\nThe average of the items in the list is.... ", average)
+ 
+# If a list contains strings, you can combine the string into
+# a single long string using the join string method:
+ 
+haka_list = ["Taringa","whakarongo!","Kia","rite!","Kia","rite!"]
+joined_list = " ".join(haka_list)
+print("\nThe joined list is....", joined_list)
+
+
+
+
+
+# ListsSlice.py
+
+my_list = ['k','e','t','e','m','a','r','a','e']
+# elements 3rd to 5th
+# i.e. includes indexes from index 2 to index 4
+print(my_list[2:5])
+ 
+# elements beginning to 4th (i.e. to the ((9-4)-1=)6th last element)
+print(my_list[:-5])
+ 
+# elements 6th to end (i.e. from index 5 to end)
+print(my_list[5:])
+ 
+# elements beginning to end
+print(my_list[:])
+
+
+
+# ListMethodsToChangeLists (this is not a python file)
+
+list.append(elem)
+Adds a single element to the end of the list. Common error: does not return the new list, just modifies the original.
+list_1.extend(list_2) 
+Appends all of list_2 elements to the end of list_1.
+list.insert(index, elem) 
+Inserts the element at the given index, shifting elements to the right.
+list.index(elem)
+Searches for the given element from the start of the list and returns its index. Throws a ValueError if the element does not appear (use "in" to check without a ValueError - see below).
+list.remove(elem)
+Searches for the first instance of the given element and removes it (throws ValueError if not present)
+list.sort()
+Sorts the list in place (does not return it)
+list.reverse()
+Reverses the list in place (does not return it)
+list.pop(index)
+Removes and returns the element at the given index. Returns the rightmost element if index is omitted (roughly the opposite of append()).
+if value in L: 
+A boolean check to find out if a value exists in the list L
+
+
+
+
+
+# Timer.py
+ 
+from datetime import datetime, timedelta
+ 
+duration = 5
+ 
+run = input("enter s to begin...")
+ 
+period = timedelta(seconds=1)
+ 
+next_time = datetime.now() + period
+ 
+counter = 0
+while run == 's' and counter < duration:
+    if next_time <= datetime.now():
+        print("..", counter)
+        counter += 1
+        # reevaluate the next_time variable
+        next_time += period
+
+# When the program runs it prints to the console every second.
+# It uses a timedelta object called period, and this is set to one second on line 12.
+# A next_time variable is created on line 14. This is for some time in the future.
+
+# In the while loop, the next_time variable is constantly evaluated.
+# When the current time "passes" next_time, then the print statement and any other logic is executed.
+# At the end of the while loop, the loop counter is incremented, and the next_time variable is reset to a new time.
+# The looping continues until the counter reaches its limit, then the while statement is exited.
+
+
+
+
+# Tuples.py
+
+# Note that we don't need to use parentheses when defining a tuple, as follows:
+p = 2,3, 67 
+print(p)
+# output is (2, 3, 67)
+
+bank_accounts = (("Joe", 33, "234 Great South Road", "022629107"),
+                 ("Tama", 6000),
+                 ("Suzanne", 21025, "45 Green Lane"),
+                 ("Anihera", -75))
+ 
+print("The number of bank accounts is ", len(bank_accounts))
+ 
+# showing names and balances
+for i in bank_accounts:
+    print("\nThe name is ", i[0], " and the balance is $", i[1])
+ 
+# showing only names with addresses
+for i in bank_accounts:
+    if len(i)>2:
+        print("\nThe name is ", i[0], " and the address is ", i[2])
+
+
+
+
+
+# Dictionary.py
+
+# note that in this example, all of the keys we are using are strings, and so need quotes around them
+# however, a dictionary key DOES NOT have to be a string, it just needs to be of an immutable type
+# e.g. integer, float, string, tuple, or Boolean (but not a list or another dictionary, since these are mutable).
+
+dictionary_1 = {"V344LDA":2000,
+                "J245DWE":6350,
+                "K265QWS":500}
+ 
+# retrieving a value from the dictionary
+print("The car with registration V344LDA is worth $", dictionary_1["V344LDA"])
+ 
+# now for a more challenging example.....
+ 
+# create a mapping of state to abbreviation
+states = {
+    'Oregon': 'OR',
+    'Florida': 'FL',
+    'California': 'CA',
+    'New York': 'NY',
+    'Michigan': 'MI'
+}
+ 
+# create a basic set of states and some cities in them
+cities = {
+    'CA': 'San Francisco',
+    'MI': 'Detroit',
+    'FL': 'Jacksonville'
+}
+ 
+# add some more cities
+cities['NY'] = 'New York'
+cities['OR'] = 'Portland'
+ 
+# print out some cities
+print ('-' * 10)
+print ("NY State has: ", cities['NY'])
+print ("OR State has: ", cities['OR'])
+ 
+# print some states
+print ('-' * 10)
+print ("Michigan's abbreviation is: ", states['Michigan'])
+print ("Florida's abbreviation is: ", states['Florida'])
+ 
+# do it by using the state then cities dict
+print ('-' * 10)
+print ("Michigan has: ", cities[states['Michigan']])
+print ("Florida has: ", cities[states['Florida']])
+ 
+# print every state abbreviation
+print ('-' * 10)
+for state, abbrev in states.items():
+    print("{0} is abbreviated {1}".format(state, abbrev))
+ 
+# print every city in state
+print( '-' * 10)
+for abbrev, city in cities.items():
+    print ("{0} has the city {1}".format(abbrev, city))
+ 
+# now do both at the same time
+print ('-' * 10)
+for state, abbrev in states.items():
+    print ("{0} state is abbreviated {1} and has city {2}".format(
+        state, abbrev, cities[abbrev]))
+ 
+print ('-' * 10)
+# safely get a abbreviation by state that might not be there
+state = states.get('Texas')
+# note that the above get() method returns None if 'Texas' is not a key in the states dictionary 
+if not state:
+    print ("Sorry, no Texas.")
+ 
+# get a city with a default value
+city = cities.get('TX', 'Does Not Exist')
+print ("The city for the state 'TX' is: {0}".format(city))
