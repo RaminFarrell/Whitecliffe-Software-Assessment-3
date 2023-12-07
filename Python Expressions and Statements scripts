@@ -1,0 +1,524 @@
+# PythonShapes1.py
+
+a = float(input("Please enter the base of the triangle\n"))
+b = float(input("Please enter the height of the triangle\n"))
+
+# Calculating the area of the triangle
+area = a*b
+
+print("The area of the triangle is ", area, "\n")
+
+# Testing
+"""
+print("My assertions are:"
+"\na = 1, b = 4 => area = 4"
+"\na = 1.5, b = 3 => area = 4.5"
+)
+"""
+
+
+
+#PythonShapes2.py
+
+import math
+
+radius = float(input("Please input the radius of the circle\n"))
+
+area = round((3/4) * math.pi * radius**2, 2)
+
+print("The area of the shape is", area, "\n")
+
+# Testing
+"""
+print("My assertions are:"
+"\nradius = 1 => area = 2.36"
+"\nradius = 2.5 => area = 14.73"
+)
+"""
+
+
+
+# PythonShapes3.py
+
+import math
+
+hypotenuse = float(input("Please input the hypotenuse of the triangle\n"))
+leg = float(input("Please input another side of the triangle\n"))
+
+other_leg = math.sqrt(hypotenuse**2 - leg**2)
+
+# area is half the base * the height of the triangle
+area = round(leg * other_leg / 2, 1)
+
+print("The area of the triangle is", area, "\n")
+
+# Testing
+"""
+print("My assertions are:"
+"\nhypotenuse = 5, leg = 3 => area = 6.0"
+"\nhypotenuse = 15, leg = 12 => area = 54.0"
+)
+"""
+
+
+
+# PythonShapes4.py
+
+import math
+
+leg = float(input("Please input the leg of the triangle adjacent to 40deg\n"))
+
+# Converting degrees to radians, to be used as input the tangent function
+other_leg = leg * math.tan(math.radians(40))
+
+area = round(leg * other_leg / 2, 2)
+
+print("The area of the triangle is", area, "\n")
+
+# Testing
+"""
+print("My assertions are:"
+"\nleg = 1 => area = 0.42"
+"\nleg = 6 => area = 15.1"
+)
+"""
+
+
+
+
+# BooleanAnd.py
+
+is_alive = True
+time_remaining = False
+ 
+# Test case assertion 1: result should be False
+print("The game in progress status is....\n")
+print(is_alive
+      and time_remaining, "\n")
+ 
+print("Giving more time to play...\n")
+time_remaining = True
+ 
+# Test case assertion 2: result should be True
+print("The game in progress status is now....\n")
+print(is_alive
+      and time_remaining, "\n")
+
+
+
+
+# BooleanOr.py
+
+# Note the order of operations- AND operators are executed before OR operators
+
+is_fuel_in_tank = True
+is_driver_licensed = False
+is_driver_insured = True
+ 
+print("This program works out whether you can have a car, or a driver....\n")
+ 
+# Test case assertion 1: result should be True
+print("Program output is ",
+      is_fuel_in_tank
+      or is_driver_licensed
+      and is_driver_insured, "\n")
+ 
+print("Removing all the fuel...\n")
+is_fuel_in_tank = False
+ 
+# Test case assertion 2: result should be False
+print("Program output is now ",
+      is_fuel_in_tank
+      or is_driver_licensed
+      and is_driver_insured, "\n")
+
+
+
+
+# BooleanExerciseActivity1.py
+
+# person can attend the school if *[they are less than 4km from the school, under 18 AND have right to stay in NZ] , OR *[if they are over 18 AND can pay international fees]
+
+less_than_4km = True
+under_18 = True
+NZ_right = False
+can_pay_international = True
+
+print("Can you attend this school: ",
+less_than_4km
+and under_18
+and NZ_right
+or under_18
+and can_pay_international)
+
+# note that the above logic is equivalent to the following
+
+print("Can you attend this school: ",
+under_18
+and (
+    less_than_4km
+and NZ_right    
+or can_pay_international)
+    )
+
+
+
+# BooleanExerciseActivity2.py
+
+# person can make a purchase if *[they are registered AND the shopping cart has at least one item in it] OR *the person  is using a guest login
+# Note that this would not make sense in the real world, because that would mean that someone that is registered but does  not have an item in their cart would not be able to make a purchase if they don't have something in their cart whereas someone with a guest login would be able to make a purchase without something in their cart
+
+# Note that in this example, we wouldn't have both user_registered = True and guest_login = True, i.e. we wouldn't have both of these being true, i.e. we wouldn't have the case where user_registered is True and item_in_cart is False, and then guest_login is True. Note that with Python "or" expressions, the expression will evaluate to True when the first True operand within that expression is evaluated - so in this case, it makes sense to check if the user has guest_login = True as the first expression in the OR expression, because if this evaluates to True then we can return the whole conditional expression to evaluate to True, instead of having to evaluate the AND expression.
+
+user_registered = True
+item_in_cart = False
+guest_login = True
+
+print("Can you make a purchase: ",
+guest_login
+or
+user_registered
+and item_in_cart
+)
+
+
+
+
+# BooleanComparisonsExercise.py
+
+print("This program works out eligibility for enrolment....\n")
+
+distance_from_school = float(input("Please input your distance from the school in km:\n"))
+age_in_years = int(input("Please input your age in years:\n"))
+
+has_residency = True
+# has_residency = bool(int(input("Please enter the number 1 if you have residency, otherwise enter the number 0:\n")))
+
+is_fee_foreign = True
+# is_fee_foreign = bool(int(input("Please enter the number 1 if you are willing to pay foreign fees, otherwise enter the number 0:\n")))
+
+print("The student's eligibility to enrol is ",
+      distance_from_school < 4
+      and 10<= age_in_years < 18
+      and has_residency
+      or age_in_years < 18
+      and is_fee_foreign, "\n")
+
+
+
+
+# BooleanComparisonsExercise2.py
+
+from datetime import date
+
+current_year = date.today().year
+
+yob = int(input("\nPlease enter your year of birth:\n"))
+name = input("Please enter your full name\n")
+
+print("Is your application approved:\n",
+current_year - yob >= 21
+and name != "Suzanne May"
+and name != "Wiremu Rangi")
+
+
+
+
+# MyParkingMeter.py
+
+print ("Kia Ora, this is a parking meter")
+
+park_time = float(input("Please input your parking time\n"))
+cost = 0
+rate = 4
+
+if park_time <= 3:
+    cost = rate * park_time
+    
+else :
+    rate -= 2
+    cost = 12 + rate*(park_time - 3)
+print("The cost of parking for", park_time, "hours is", cost, "\n")
+
+# Test Case Assertion 1
+"""
+print("My assertions are:"
+"\npark_time = 4"
+"\n=> total cost of parking = $14"
+"\npark_time = 2"
+"\n=> total cost of parking = 8"
+"\npark_time = 5"
+"\n=> total cost of parking = $16\n"
+)
+"""
+
+
+
+# NZInterestingFacts.py
+
+from datetime import datetime
+
+score = 0
+start_time = datetime.today()
+print("NZ Quiz\n\n")
+
+answer_one = input("What is the capital of New Zealand?\n")
+if answer_one.lower() == "wellington":
+    score += 1
+    print("That is correct! Your current score is", score, "\n")
+else:
+    print("That is incorrect :( Your score is still", score, "\n")
+
+answer_two = input("What is the Maori name for New Zealand?\n")
+if answer_two.lower() == "aotearoa":
+    score += 1
+    print("That is correct! Your current score is", score, "\n")
+else:
+    print("That is incorrect :( Your score is still", score, "\n")
+
+answer_three = input("What is the name of the New Zealand netball team?\n")
+if answer_three.lower() in ("silver ferns", "the silver ferns"):
+    score += 1
+    print("That is correct! Your current score is", score, "\n")
+else:
+    print("That is incorrect :( Your score is still", score, "\n")
+    
+answer_four = input("What is the international phone code for New Zealand?\n")
+if answer_four == "64" or answer_four == "+64":
+    score += 1
+    print("That is correct! Your current score is", score, "\n")
+else:
+    print("That is incorrect :( Your score is still", score, "\n")
+    
+answer_five = input("The colours of the New Zealand flag are red, white and ...?\n")
+if answer_five == "blue":
+    score += 1
+    print("That is correct! Your current score is", score, "\n")
+else:
+    print("That is incorrect :( Your score is still", score, "\n\n")
+    
+print("Your final score is", score)
+print("The time it took for you to complete this quiz is:", (datetime.today() - start_time).seconds, "seconds\n")
+
+# Testing
+"""
+print("My assertions are:"
+"\nanswer_one = auckland => score = 0"
+"\nanswer_two = Aotearoa => score = 1"
+"\nanswer_three = the silver ferns => score = 2"
+"\nanswer_four = +64 => score = 3"
+"\nanswer_five = green => score = 3"
+"\nYour final score is 3"
+)
+"""
+
+
+
+
+# PythonIfPractice1.py
+
+column = input("Please input the column of the square\n")
+if column.lower() in ("a", "c", "e", "g"):
+    column_term = 1
+elif column.lower() in ("b", "d", "f", "h"):
+    column_term = 0
+else:
+    column_term = 1
+    print("Your column input is invalid - the default column is: a\n")
+
+row = int(input("Please input the row number of the square\n"))
+
+coordinate_reference = column_term + row
+if coordinate_reference % 2 == 0:
+    print("The square is black")
+else:
+    print("The square is white")
+
+# Testing
+"""
+print("\nMy assertions are:\n"
+"column = a , row = 1 => The square is black\n"
+"column = t , row = 1 => Your column input is invalid - the default column is: a , The square is black\n"
+"column = h , row = 7 => The square is white\n"
+)
+"""
+
+
+
+# PythonIfPractice2.py
+
+side_a = float(input("Enter the length of the side 'a' of the triangle:\n"))
+side_b = float(input("Enter the length of the side 'b' of the triangle:\n"))
+side_c = float(input("Enter the length of the side 'c' of the triangle:\n"))
+
+if side_a != side_b and side_a != side_c and side_b != side_c:
+    print("The triangle is scalene")
+elif side_a == side_b == side_c:
+    print("The triangle is equilateral")
+else:
+    print("The triangle is isosceles")
+
+# Testing
+"""
+print("\nMy assertions are:\n"
+"side_a = 1, side_b = 2, side_c = 3 => The triangle is scalene\n"
+"side_a = 1, side_b = 1, side_c = 3 => The triangle is isosceles\n"
+"side_a = 1, side_b = 1, side_c = 1 => The triangle is equilateral\n"
+)
+"""
+
+
+
+# PythonIfPractice3.py
+
+minutes = int(input("In the last month, how many minutes have you talked on the phone?\n"))
+texts = int(input("In the last month, how many texts have you sent?\n"))
+
+base_charge = 1500
+allowed_minutes = 50
+allowed_texts = 50
+additional_minute_cost = 25
+additional_text_cost = 15
+extra_minutes_cost = 0
+extra_texts_cost = 0
+call_centre_fee = 44
+tax_rate = 0.05
+tax_amount = 0
+subtotal = 0
+
+print("Your base rate is:", base_charge/100, "\n")
+
+if minutes > allowed_minutes:
+    extra_minutes_cost = (minutes - allowed_minutes) * additional_minute_cost
+    print("Your additional minutes charge (before tax) is: $", extra_minutes_cost/100, "\n")
+
+if texts > allowed_texts:
+    extra_texts_cost = (texts - allowed_texts) * additional_text_cost
+    print("Your additional texts charge (before tax) is: $", extra_texts_cost/100, "\n")
+print("Your 111 call centre fee is: $", call_centre_fee/100)
+
+subtotal = base_charge + extra_minutes_cost + extra_texts_cost + call_centre_fee
+tax_amount = subtotal * tax_rate
+
+print("Taxes: $", round(tax_amount/100, 2), "\n"
+"Subtotal (before tax applied): $", round(subtotal/100, 2), "\n"
+"Total charges (with tax applied): $", round(subtotal*(1 + tax_rate)/100, 2), "\n"
+)
+
+"""
+print("My assertions are:\n"
+"minutes = 40, texts = 55 => additional_texts_cost = 0.75, tax = 0.81, Total Charges = $17.00\n"
+"minutes = 55, texts = 40 => additional_minutes_cost = 1.25, tax = 0.83, Total Charges = $17.52\n"
+"minutes = 40, texts = 40 => tax = 0.77, Total Charges = $16.21\n"
+"minutes = 55, texts = 55 => additional_minutes_cost = 1.25, additional_texts_cost = 0.75, tax = 0.87, Total Charges = $18.31\n")
+"""
+
+
+
+
+# PythonIfPractice4.py
+
+import math
+
+choice = input("If you would to find the surface area of the cylinder, then enter 'surface'\n"
+"If you would like to find the volumne of the cylinder, then enter 'volume'\n")
+
+# note that we only want the prompts for the length and radius to appear if the user inputs a valid choice, so we place these prompts for the length and radius inside of the if statements below
+
+if choice.lower() == "area":
+    length = float(input("Enter the length of the cylinder\n"))
+    radius = float(input("Enter the radius of the cylinder\n"))
+    surface_area = round(2 * math.pi * radius * (radius + length), 2)
+    print("The surface area of the cylinder is:", surface_area, "\n\n")
+    
+if choice.lower() == "volume":
+    length = float(input("Enter the length of the cylinder\n"))
+    radius = float(input("Enter the radius of the cylinder\n"))
+    volume = round(math.pi * radius**2 * length, 2)
+    print("The volume of the cylinder is:", volume, "\n\n")
+    
+# Testing
+"""
+print("My assertions are:\n",
+"volume, radius = 1, length = 1 => volume = 3.14\n",
+"area, radius = 1, length = 1 => surface area = 12.57\n"
+)
+"""
+
+
+
+# WaveLengths.py
+
+print("Welcome to wavelength to colour converter\n")
+wave_length = int(input("Please enter an integer wavelength between 380 and 750\n"))
+print("Thank you, the wavelength that you entered in nanometres is ", wave_length,"\n")
+print("The colour for this wavelength is...", end="")
+ 
+if wave_length > 750:
+    print ("The wavelength entered is higher than the visible spectrum! This is infrared.")
+elif wave_length >= 620:
+    print ("Red") 
+elif wave_length >= 590:
+    print("Orange")
+elif wave_length >= 570:
+    print("Yellow")
+elif wave_length >= 495:
+    print("Green")
+elif wave_length >= 450:
+    print("Blue")
+elif wave_length >= 380:
+    print("Violet")
+else:
+    print("Indeterminate, :-(, the number entered is "
+          "outside the visible spectrum!")
+ 
+# test case assertion 1
+# """
+print("\n\nMy assertions are:\n",
+"wave_length = 385 => colour is Violet\n")
+
+# """
+
+
+
+
+
+# ChineseZodiac.py
+
+year = int(input("Please input a year:\n"))
+
+if year % 12 == 0:
+    print("\n", year, "is the year of the Monkey\n")
+elif year % 12 == 1:
+    print("\n", year, "is the year of the Rooster\n")
+elif year % 12 == 2:
+    print("\n", year, "is the year of the Dog\n")
+elif year % 12 == 3:
+    print("\n", year, "is the year of the Pig\n")
+elif year % 12 == 4:
+    print("\n", year, "is the year of the Rat\n")
+elif year % 12 == 5:
+    print("\n", year, "is the year of the Ox\n")
+elif year % 12 == 6:
+    print("\n", year, "is the year of the Tiger\n")
+elif year % 12 == 7:
+    print("\n", year, "is the year of the Hare\n")
+elif year % 12 == 8:
+    print("\n", year, "is the year of the Dragon\n")
+elif year % 12 == 9:
+    print("\n", year, "is the year of the Snake\n")
+elif year % 12 == 10:
+    print("\n", year, "is the year of the Horse\n")
+elif year % 12 == 11:
+    print("\n", year, "is the year of the Sheep\n")
+else:
+    print("\nYou have entered an invalid year\n")
+
+# Testing
+"""
+print("\nMy assertions area:\n",
+"year = 2000 => 2000 is the year of the Dragon\n",
+"year = -500 => 2000 is the year of the Rat\n",
+
+)
+"""
