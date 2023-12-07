@@ -1,0 +1,135 @@
+# Function1.py
+ 
+def show_hello():
+    print("Hello there, this is my very first function!!!\n\n")
+ 
+print("Testing my first user defined function...\n\n")
+ 
+# invoking the function
+show_hello()
+ 
+# invoking the function again
+show_hello()
+
+
+
+
+# Ping.py
+
+def ping():
+    return "Ping!"
+
+x = ping()
+print(x)
+
+
+
+
+
+# SphereCalc.py
+
+# Function which will return the volume of a sphere when given a radius
+
+import math
+# by importing the math module, we can access the constant pi by using math.pi
+
+# define a function which has 1 parameter, i.e. this function accepts one argument, which will be the radius of the sphere
+# we will also use a docstring which provides documentation on what the function does, and how to use it
+# note that we are using Python 3.0 , so we don't need to write (4.0/3.0) in order to get a float value
+
+def volume(r):
+    """Returns the volume of a sphere with radius r."""
+    v = (4/3) * math.pi * r**3
+    return v
+
+# note that we have a REQUIRED ARGUMENT, so that if we called the volume function without an argument, like volume() , then we would get an error.
+print(volume(2))
+print(volume(3))
+
+
+
+# TriangleArea.py
+
+# Function which will return the area of a triangle with two REQUIRED arguments
+
+def triangle_area(b,h):
+    """Returns the area of a triangle with base b and height h"""
+    return 0.5 * b * h
+
+print(triangle_area(3, 6))
+
+
+
+
+# Convert
+
+# Function which converts a person's height from American units to cm
+# uses KEYWORD arguments (i.e. DEFAULT arguments)
+
+def cm(feet = 0, inches = 0):
+    """Converts a length from feet and inches to centimetres"""
+    inches_to_cm = inches * 2.54
+    feet_to_cm = feet * 12 * 2.54
+    return inches_to_cm + feet_to_cm
+
+print(cm(feet = 5))
+print(cm(inches = 70))
+print(cm(feet = 5, inches = 8))
+print(cm(inches = 8, feet = 5))
+
+
+
+
+# UsingVariableArgument.py
+
+def show_hello(param):
+    print("Hello there, the number of times this "
+          "function is called is {0}!!!\n\n".format(param))
+ 
+ 
+# creating and setting a counter
+counter = 0
+print("Testing my second user defined function...\n\n")
+ 
+counter += 1
+# invoking the function
+show_hello(counter)
+ 
+counter += 1
+# invoking the function again
+show_hello(counter)
+
+
+
+
+
+# DifferenceCalculator1.py
+
+number_1 = 5
+number_2 = 7
+
+print("The first number is {0}.\n"
+          "The second number is {1}.\n"
+          "The first number minus the second is {2}!!!\n"
+          .format(number_1, number_2, number_1 - number_2))
+
+
+
+
+
+
+# DifferenceCalculator2.py
+
+first_number = 6
+second_number = 4
+ 
+def show_difference(number_1, number_2):
+    print("The first number is {0}.\n"
+          "The second number is {1}.\n"
+          "The first number minus the second is {2}!!!\n"
+          .format(number_1, number_2, number_1 - number_2))
+ 
+print("Welcome to my difference calculator...\n\n")
+ 
+# invoking the function
+show_difference(first_number, second_number)
